@@ -1,6 +1,5 @@
 {
-  "name": "link",
-  "datadir": "link",
+  "name": "MIX",
   "engine": {
     "Ethash": {
       "params": {
