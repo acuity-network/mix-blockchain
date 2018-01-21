@@ -37,6 +37,7 @@
     "networkID" : "0x4c",
     "chainID": "0x4c",
     "maximumExtraDataSize": "0x20",
+    "gasLimitBoundDivisor": "0x0400",
     "minGasLimit": "0x1388",
     "accountStartNonce": "0x00",
     "eip86Transition": "0x7fffffffffffff",
