@@ -1,14 +1,27 @@
-# mix-blockchain
+# MIX Blockchain
 A blockchain for the storage of semantic linked data.
 
-For Parity:
+Network ID: 76
 
-`
+Chain ID: 76
+
+MIX Blockchain can be synchronized with either Parity or MIX Geth:
+
+## Parity
+
+```
 parity --chain mix.json --pruning=fast --pruning-history=64 --pruning-memory=0
-`
+```
 
-For Geth, use [MIX Geth](https://github.com/mix-blockchain/mix-geth/releases):
+The pruning options are essential to prevent a 51% attack.
 
-`
-geth --mix
-`
+## Geth
+
+Download [MIX Geth](https://github.com/mix-blockchain/mix-geth/releases):
+
+You might need to make the file executable before you can run it, i.e.
+
+```
+chmod +x mix-geth-linux
+./mix-geth-linux
+```
