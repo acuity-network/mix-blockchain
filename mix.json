@@ -44,8 +44,7 @@
 		"eip140Transition": 3000000,
 		"eip211Transition": 3000000,
 		"eip214Transition": 3000000,
-		"eip658Transition": 3000000,
-		"eip98Transition": "0x7fffffffffffff"
+		"eip658Transition": 3000000
 	},
 	"nodes": [
 		"enode://aeb6070deb50efeb41c5e4283a6a3b08ff701fef90e3522161c145f30df2852af3dfc51ba74591f7c9d96b11ca4c3c2b354bf58dd243f2d877f6eecc2373fd1d@139.162.15.124:30313",
@@ -65,7 +64,7 @@
 		"enode://799d0a8836e17ef7fcc58b3d5ced5bb1fe474b31a09851f938d381f4556fa8954ca308f6a178d22ed56769a8b878ac8f9cc62c889f9cafab45a3bd4f6024bb29@172.104.68.7:30313",
 		"enode://ab7b1aab2439aafadcb52f8353e60fc1eea55ee5a01b4ddf46ecdeaa2e869c4bf305249757dc74baa78cf05c5d98ffe5c2a008851f08cab6096c78a08dee7c17@172.104.68.7:30303",
 		"enode://ab4a7fb0963e4951bebbefd2ec09ddac018bb27600a6063d755dfc10be118cbfe3954ada561afbce4cbda6f62364c12902b9e6bdef258aff36b8a73db3c0f161@172.105.16.240:30313",
-		"enode://30ff1bd89f58a1adae1f2b2ed1e36fa95caf5c2c7e085cf3a49f14705427ca7d7b2508060d058ceda57c708e8aa4661304f3c17eaae4da2e9cea6b64b3893c2f@127.0.0.1:30303"
+		"enode://30ff1bd89f58a1adae1f2b2ed1e36fa95caf5c2c7e085cf3a49f14705427ca7d7b2508060d058ceda57c708e8aa4661304f3c17eaae4da2e9cea6b64b3893c2f@172.105.16.240:30303"
 	],
 	"accounts": {
 		"0000000000000000000000000000000000000001": { "builtin": { "name": "ecrecover", "pricing": { "linear": { "base": 3000, "word": 0 } } } },
@@ -73,9 +72,47 @@
 		"0000000000000000000000000000000000000003": { "builtin": { "name": "ripemd160", "pricing": { "linear": { "base": 600, "word": 120 } } } },
 		"0000000000000000000000000000000000000004": { "builtin": { "name": "identity", "pricing": { "linear": { "base": 15, "word": 3 } } } },
 		"0000000000000000000000000000000000000005": { "builtin": { "name": "modexp", "activate_at": 3000000, "pricing": { "modexp": { "divisor": 20 } } } },
-		"0000000000000000000000000000000000000006": { "builtin": { "name": "alt_bn128_add", "activate_at": 3000000, "pricing": { "linear": { "base": 500, "word": 0 } } } },
-		"0000000000000000000000000000000000000007": { "builtin": { "name": "alt_bn128_mul", "activate_at": 3000000, "pricing": { "linear": { "base": 40000, "word": 0 } } } },
-		"0000000000000000000000000000000000000008": { "builtin": { "name": "alt_bn128_pairing", "activate_at": 3000000, "pricing": { "alt_bn128_pairing": { "base": 100000, "pair": 80000 } } } },
+		"0000000000000000000000000000000000000006": {
+			"builtin": {
+				"name": "alt_bn128_add",
+				"activate_at": 3000000,
+				"eip1108_transition": "0x7fffffffffffff",
+				"pricing": {
+					"alt_bn128_const_operations": {
+						"price": 500,
+						"eip1108_transition_price": 150
+					}
+				}
+			}
+		},
+		"0000000000000000000000000000000000000007": {
+			"builtin": {
+				"name": "alt_bn128_mul",
+				"activate_at": 3000000,
+				"eip1108_transition": "0x7fffffffffffff",
+				"pricing": {
+					"alt_bn128_const_operations": {
+						"price": 40000,
+						"eip1108_transition_price": 6000
+					}
+				}
+			}
+		},
+		"0000000000000000000000000000000000000008": {
+			"builtin": {
+				"name": "alt_bn128_pairing",
+				"activate_at": 3000000,
+				"eip1108_transition": "0x7fffffffffffff",
+				"pricing": {
+					"alt_bn128_pairing": {
+						"base": 100000,
+						"pair": 80000,
+						"eip1108_transition_base": 45000,
+						"eip1108_transition_pair": 34000
+					}
+				}
+			}
+		},
 		"97c7f4f8f0bbf384578a9f5754ae73f37ff49ec2": { "balance": "55000000000000000000000000" }
 	}
 }
