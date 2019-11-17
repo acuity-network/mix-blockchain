@@ -1,0 +1,14 @@
+[Unit]
+Description=Parity Ethereum client
+Documentation=https://wiki.parity.io
+After=network.target
+
+[Service]
+Type=exec
+ExecStart=parity --no-download --no-consensus --chain=mix --port=0 --jsonrpc-port=8645 --jsonrpc-apis=net,parity_set --jsonrpc-cors=all --no-ws --no-secretstore --force-sealing --reseal-on-uncle --stratum --reseal-on-txs=all --reseal-min-period=0 --reseal-max-period=600000 --relay-set=strict --min-gas-price=1 --extra-data=Acuity --can-restart --pruning=fast --pruning-history=64 --pruning-memory=0 --ipc-path=/mix.ipc
+ExecStartPost=sleep 2
+ExecStartPost=chmod 777 ./mix.ipc
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
